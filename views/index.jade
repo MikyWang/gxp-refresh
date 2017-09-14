@@ -1,0 +1,32 @@
+extends layout
+
+mixin listServer(index,config)
+    .form-group
+        label(for="text").col-md-6.col-md-offset-1.control-label
+            span.pull-left=config.name
+            span.pull-right=config.ip
+            span(id="env#{index}").hidden=config.enname
+        .col-md-3.col-md-offset-1
+            button(id="env#{index}" type="button" onclick="refreshEnv(this)").btn.btn-primary.btn-block
+                span(aria-hidden="true").glyphicon.glyphicon-refresh
+                    | &nbsp
+                span
+                    | 重置
+
+block content
+    .container
+        .row
+            .col-md-5
+                .panel.panel-primary
+                    .panel-heading
+                        h3.panel-title=title
+                    .panel-body
+                        form.form-horizontal
+                            each config, i in configs
+                                +listServer(i,config)
+            .col-md-6.col-md-offset-1(id="gxpRefresh" style="display:none")
+                .panel.panel-warning
+                    .panel-heading
+                        h3.panel-title
+                            | gxp环境重置结果
+                    .panel-body(id="refreshResult")

@@ -1,0 +1,54 @@
+mixin navOption(name,link,isActive)
+  if isActive==true
+    li.active
+      a(href=link)=name
+  else
+    li
+      a(href=link)=name
+
+mixin OptionActive(navIndex)
+  if navIndex=="1"
+    +navOption("环境重置","/gxp/refresh",true)
+    +navOption("地址及端口修改","/gxp/modify",false)
+  if navIndex=="2"
+    +navOption("环境重置","/gxp/refresh",false)
+    +navOption("地址及端口修改","/gxp/modify",true)
+
+doctype html
+html(lang="zh-CN")
+  head
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='/stylesheets/style.css', rel='stylesheet')
+  body
+    .modal.fade(role="dialog" tabindex="-1")#modal
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            button(data-dismiss="modal" type="button" aria-label="Close").close
+              span(aria-hidden="true")
+                | &times;
+            h4#modalTitle
+          .modal-body#modalBody
+          .modal-footer#modalFooter(style="display:none")
+            button(class="btn btn-default" data-dismiss="modal" type="button")
+              | 关闭
+            button(class="btn btn-primary" type="button")
+              | 确定
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" aria-expanded="false")
+            span.sr-only
+              Toggle navigation
+            span.icon-bar
+          a.navbar-brand(href='/')
+            | 大前置管理
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1
+          ul.nav.navbar-nav
+            +OptionActive(navbarIndex)
+    block content
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/main.js')

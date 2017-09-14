@@ -1,0 +1,38 @@
+{
+    "configs": [{
+            "name": "GXP开发环境一",
+            "ip": "10.16.51.63",
+            "enname": "dev63"
+        },
+        {
+            "name": "GXP开发环境二",
+            "ip": "10.20.161.99",
+            "enname": "dev99"
+        },
+        {
+            "name": "GXP开发环境三",
+            "ip": "10.19.131.48",
+            "enname": "dev48"
+        },
+        {
+            "name": "GXP版本一",
+            "ip": "10.20.161.103",
+            "enname": "verONE"
+        },
+        {
+            "name": "GXP版本二",
+            "ip": "10.16.51.153",
+            "enname": "verTWO"
+        },
+        {
+            "name": "GXP版本三",
+            "ip": "10.20.161.91",
+            "enname": "verTHREE"
+        },
+        {
+            "name": "GXP版本四",
+            "ip": "10.20.161.35",
+            "enname": "verFOUR"
+        }
+    ]
+}

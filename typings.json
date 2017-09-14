@@ -1,0 +1,13 @@
+{
+    "globalDependencies": {
+        "jquery": "registry:dt/jquery#1.10.0+20170310222111",
+        "mysql": "registry:dt/mysql#0.0.0+20160316155526",
+        "node": "registry:dt/node#6.0.0+20160909174046"
+    },
+    "dependencies": {
+        "express": "registry:npm/express#4.14.0+20160925001530",
+        "iconv-lite": "registry:dt/iconv-lite#0.0.0+20161005205115",
+        "ssh2": "registry:dt/ssh2#0.5.0+20161228203806",
+        "xml2js": "registry:dt/xml2js#0.0.0+20170310073152"
+    }
+}
