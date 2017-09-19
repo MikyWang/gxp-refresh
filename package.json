@@ -1,38 +1,39 @@
 {
-    "name": "gxp-refresh",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "start": "tsc && concurrently \"node ./bin/www\"",
-        "tsc": "tsc",
-        "tsc:w": "tsc -w"
-    },
-    "dependencies": {
-        "body-parser": "~1.15.1",
-        "cookie-parser": "~1.4.3",
-        "debug": "~2.2.0",
-        "express": "~4.13.4",
-        "forever": "^0.15.3",
-        "iconv-lite": "^0.4.19",
-        "jade": "~1.11.0",
-        "jquery": "^3.2.1",
-        "morgan": "~1.7.0",
-        "reflect-metadata": "^0.1.8",
-        "serve-favicon": "~2.3.0",
-        "ssh2": "^0.5.5",
-        "xml2js": "^0.4.19"
-    },
-    "devDependencies": {
-        "concurrently": "^3.1.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/MikyWang/gxp-refresh.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/MikyWang/gxp-refresh/issues"
-    },
-    "homepage": "https://github.com/MikyWang/gxp-refresh#readme"
+  "name": "gxp-refresh",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsc && concurrently \"node ./bin/www\"",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "forever": "^0.15.3",
+    "iconv-lite": "^0.4.19",
+    "jade": "~1.11.0",
+    "jquery": "^3.2.1",
+    "jquery.cookie": "^1.4.1",
+    "morgan": "~1.7.0",
+    "reflect-metadata": "^0.1.8",
+    "serve-favicon": "~2.3.0",
+    "ssh2": "^0.5.5",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "concurrently": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikyWang/gxp-refresh.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikyWang/gxp-refresh/issues"
+  },
+  "homepage": "https://github.com/MikyWang/gxp-refresh#readme"
 }

@@ -60,7 +60,7 @@ export class GxpEnv {
     public restartService(callback, options) {
         this._sshClient = new SshClient(this.ip, this.port, this.user, this.password);
         this.sshClient.startConnection(option => {
-            let cmd = `stopgxp -e\n startgxp\n sleep 2\n stopgxp -e\n startgxp\n sleep 2\n exit\n`;
+            let cmd = `stopgxp -e\n sleep 1\n startgxp\n sleep 1\n stopgxp -e\n sleep 1\n startgxp\n sleep 1\n exit\n`;
             this.sshClient.callShell(cmd, opt => {
                 this.sshClient.stopConnection();
                 if (callback) {

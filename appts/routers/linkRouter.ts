@@ -15,7 +15,7 @@ export class LinkRouter {
         this.router.get('/', (req: Request, res: Response, next: NextFunction) => {
             res.setHeader('Access-Control-Allow-Origin', '*');
             res.render('index', {
-                title: "gxp环境重置",
+                title: "大前置管理",
                 configs: Entry.entry.gxpIPs,
                 navbarIndex: "1"
             });

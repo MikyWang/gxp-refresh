@@ -17,16 +17,16 @@ block content
     .container
         .row
             .col-md-5
-                .panel.panel-primary
+                .panel.panel-default
                     .panel-heading
-                        h3.panel-title=title
+                        h3.panel-title.text-center=title
                     .panel-body
                         form.form-horizontal
                             each config, i in configs
                                 +listServer(i,config)
             .col-md-6.col-md-offset-1(id="gxpRefresh" style="display:none")
-                .panel.panel-warning
+                .panel.panel-default
                     .panel-heading
-                        h3.panel-title
+                        h3.panel-title.text-center
                             | gxp环境重置结果
                     .panel-body(id="refreshResult")

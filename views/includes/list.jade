@@ -1,0 +1,22 @@
+mixin AddList(itemList)
+    .panel.panel-default
+        .panel-heading.text-center(id="#{itemList.headerId}")
+            h3.panel-title=itemList.title
+        if itemList.isNeedSearch==true
+            .panel-body(id="#{itemList.title}")
+                form.form-horizontal
+                    .form-group
+                        .col-md-7
+                            input.form-control(id="#{itemList.title}" type="search" placeholder="支持模糊查询" onkeydown="if(event.keyCode==13)return false;")
+                        .col-md-5
+                            button.btn.btn-primary.btn-block(id='#{itemList.title}' type="button" onclick="#{itemList.searchEventName}(this)")
+                                span(class="glyphicon glyphicon-search" aria-hidden="true")
+                                    | &nbsp
+                                span
+                                    | 搜索
+        .list-group(id="#{itemList.title}")
+            each item,i in itemList.groupItems
+                if item.isActive==true
+                    a.text-center.list-group-item.active(id="#{item.itemName}" href="#top" onclick="#{itemList.clickEventName}(this)")=item.itemName
+                else
+                    a.text-center.list-group-item(id="#{item.itemName}" href="#top" onclick="#{itemList.clickEventName}(this)")=item.itemName

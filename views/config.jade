@@ -1,0 +1,42 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title.text-center=env.configId
+    .panel-body
+        form.form-horizontal
+            .form-group
+                label(for="ip").col-md-3.control-label
+                    span
+                        | IP地址:
+                .col-md-9
+                    input(id="deviceIp" type="text" value="#{env.serviceIP}").form-control
+            .form-group
+                label(for="port").col-md-3.control-label
+                    span
+                        | 端口:
+                .col-md-9
+                    input(id="devicePort" type="text" value="#{env.port}").form-control
+            .form-group
+                label(for="flow").col-md-3.control-label
+                    span
+                        | 主流程:
+                .col-md-9
+                    input(id="deviceFlow" type="text" value="#{env.flow}").form-control
+            .form-group
+                label(for="eflow").col-md-3.control-label
+                    span
+                        | 子流程:
+                .col-md-9
+                    input(id="deviceEflow" type="text" value="#{env.eflow}").form-control
+            .form-group
+                .col-md-offset-2.col-md-4
+                    button.btn.btn-primary.btn-block(id='#{env.configId}' type="button" onclick="submitDevice(this)")
+                        span(class="glyphicon glyphicon-ok" aria-hidden="true")
+                            | &nbsp
+                        span
+                            | 确定
+                .col-md-4
+                    button.btn.btn-info.btn-block(id='#{env.configId}' type="button" onclick="resetDevice(this)")
+                        span(class="glyphicon glyphicon-refresh" aria-hidden="true")
+                            | &nbsp
+                        span
+                            | 重置
