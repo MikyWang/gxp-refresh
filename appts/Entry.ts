@@ -1,17 +1,17 @@
-import * as xml2js from 'xml2js';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import * as xml2js from 'xml2js';
 import { GxpEnv } from './models/gxpEnv';
-import { LinkRouter } from './routers/linkRouter';
 import { GxpRouter } from './routers/GxpRouter';
+import { LinkRouter } from './routers/linkRouter';
+// tslint:disable-next-line:variable-name
 const RouterType = [LinkRouter, GxpRouter];
 
 export class Entry {
 
     private static _entry: Entry;
     private _routers: LinkRouter[];
-    private _gxpIPs: Array<GxpEnv>;
-    private static _gxpServer: string = `http://10.16.51.63:8888/`;
+    private _gxpIPs: GxpEnv[];
     private static _rootdir: string = path.join(__dirname, '../');
     private _xmlParser: xml2js.Parser;
     private _xmlBuilder: xml2js.Builder;
@@ -29,16 +29,12 @@ export class Entry {
     public get gxpIPs() {
         if (!this._gxpIPs) {
             this._gxpIPs = [];
-            let configs = JSON.parse(fs.readFileSync(path.join(__dirname, '../envconfig.json'), "utf-8")).configs;
-            configs.forEach(config => {
+            const configs = JSON.parse(fs.readFileSync(path.join(__dirname, '../envconfig.json'), "utf-8")).configs;
+            configs.forEach((config) => {
                 this._gxpIPs.push(new GxpEnv(config.name, config.ip, config.enname));
             });
         }
         return this._gxpIPs;
-    }
-
-    public static get gxpServer() {
-        return this._gxpServer;
     }
 
     public static get rootdir() {
@@ -55,8 +51,8 @@ export class Entry {
 
     public InitRouters(routers) {
         this._routers = [];
-        routers.forEach(router => {
-            this._routers.push(new router);
+        routers.forEach((router) => {
+            this._routers.push(new router());
         });
     }
 

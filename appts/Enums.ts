@@ -1,9 +1,9 @@
 export enum SFTPType {
     put,
-    get
+    get,
 }
 export enum DeviceType {
     ICA,
     OCA,
-    ALL
+    ALL,
 }

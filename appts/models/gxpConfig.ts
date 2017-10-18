@@ -1,6 +1,6 @@
-import { Entry } from '../Entry';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import { Entry } from '../Entry';
 export class GxpConfig {
 
     public tpoll: Tpoll[];
@@ -16,40 +16,40 @@ export class GxpConfig {
     }
 
     public convertToModel(fileName: string) {
-        let content = fs.readFileSync(path.join(Entry.rootdir, fileName), 'utf-8');
+        const content = fs.readFileSync(path.join(Entry.rootdir, fileName), 'utf-8');
         Entry.entry.xmlParser.parseString(content, (error: any, result: any) => {
             this.init(result.gxpconf);
         });
     }
 
     public convertToXmlFile(fileName: string) {
-        let GxpConf = function (gxpconf) {
-            this.gxpconf = gxpconf;
-        }
-        let gxpconf = new GxpConf(this);
-        let content = Entry.entry.xmlBuilder.buildObject(gxpconf);
+        const GxpConf = function (gxpconfig) {
+            this.gxpconf = gxpconfig;
+        };
+        const gxpconf = new GxpConf(this);
+        const content = Entry.entry.xmlBuilder.buildObject(gxpconf);
         fs.writeFileSync(path.join(Entry.rootdir, fileName), content);
     }
 
     public updateConfig(gxpConfig: GxpConfig) {
-        let update = (conf: any, elem: any) => {
-            if (!conf.find(con => con.$.id == elem.$.id)) {
+        const update = (conf: any, elem: any) => {
+            if (!conf.find((con) => con.$.id === elem.$.id)) {
                 console.log(`新增节点：` + elem);
                 conf.push(elem);
             }
         };
-        gxpConfig.icaconf[0].ica.forEach(icaElem => {
+        gxpConfig.icaconf[0].ica.forEach((icaElem) => {
             update(this.icaconf[0].ica, icaElem);
-        })
-        gxpConfig.ocaconf[0].oca.forEach(ocaElem => {
+        });
+        gxpConfig.ocaconf[0].oca.forEach((ocaElem) => {
             update(this.ocaconf[0].oca, ocaElem);
-        })
-        gxpConfig.nodeconf[0].channelnode.forEach(nodeElem => {
+        });
+        gxpConfig.nodeconf[0].channelnode.forEach((nodeElem) => {
             update(this.nodeconf[0].channelnode, nodeElem);
-        })
-        gxpConfig.tpoll.forEach(poll => {
+        });
+        gxpConfig.tpoll.forEach((poll) => {
             update(this.tpoll, poll);
-        })
+        });
     }
 }
 
@@ -68,7 +68,7 @@ export class TpollModel {
 }
 
 export class Oca {
-    public $: ocaModel;
+    public $: OcaModel;
     constructor(oca: Oca) {
         this.$ = oca.$;
     }
@@ -81,7 +81,7 @@ export class OcaList {
     }
 }
 
-export class ocaModel {
+export class OcaModel {
     public id: string;
     public des: string;
     public flowEntry: string;
@@ -115,7 +115,7 @@ export class ocaModel {
     public HBCharResp: string;
     public para4: string;
 
-    constructor(oca: ocaModel) {
+    constructor(oca: OcaModel) {
         this.id = oca.id;
         this.charLen = oca.charLen;
         this.cocurrents = oca.cocurrents;

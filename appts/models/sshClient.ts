@@ -1,8 +1,8 @@
-import { Entry } from '../Entry';
-import * as path from 'path';
 import * as iconvLite from 'iconv-lite';
-import { SFTPType } from '../Enums';
+import * as path from 'path';
 import { Client } from 'ssh2';
+import { Entry } from '../Entry';
+import { SFTPType } from '../Enums';
 
 export class SshClient extends Client {
 
@@ -19,7 +19,7 @@ export class SshClient extends Client {
         this.password = password;
     }
 
-    public startConnection(operation?: Function, options?: any) {
+    public startConnection(operation?: (option) => void, options?: any) {
         this.on('ready', () => {
             console.log(this.toString());
             options.cmdResult += `<div><span class="text-warning">` + this.toString() + '</span></div>';
@@ -30,15 +30,15 @@ export class SshClient extends Client {
             host: this.host,
             port: this.port,
             username: this.username,
-            password: this.password
+            password: this.password,
         });
     }
 
     public sFtpOperation(remotePath: string, localPath: string, type: SFTPType, operation?: Function, options?: any) {
-        if (type == SFTPType.get) {
+        if (type === SFTPType.get) {
             this.sftp((error, sftp) => {
                 if (error) throw error;
-                sftp.fastGet(remotePath, path.join(Entry.rootdir, localPath), err => {
+                sftp.fastGet(remotePath, path.join(Entry.rootdir, localPath), (err) => {
                     if (err) throw err;
                     console.log(this.toString() + `并取文件` + remotePath + `成功`);
                     options.cmdResult += `<div><span class="text-warning">` + this.toString() + `并取文件` + remotePath + `成功</span></div>`;
@@ -46,35 +46,35 @@ export class SshClient extends Client {
                         operation(options);
                     }
                 });
-            })
-        } else if (type == SFTPType.put) {
+            });
+        } else if (type === SFTPType.put) {
             this.sftp((error, sftp) => {
-                sftp.fastPut(path.join(Entry.rootdir, localPath), remotePath, err => {
+                sftp.fastPut(path.join(Entry.rootdir, localPath), remotePath, (err) => {
                     if (err) throw err;
                     console.log(this.toString() + `并上传文件` + remotePath + `成功`);
                     options.cmdResult += `<div><span class="text-warning">` + this.toString() + `并上传文件` + remotePath + `成功</span></div>`;
                     if (operation) {
                         operation(options);
                     }
-                })
-            })
+                });
+            });
         } else {
             throw { error: "不支持的sftp类型" };
         }
     }
 
-    public callShell(cmd: string, operation?: Function, options?: any) {
+    public callShell(cmd: string, operation?: (option) => void, options?: any) {
         this.shell((err, stream) => {
             if (err) throw err;
-            var bData = false;
+            let bData = false;
             stream.on('close', () => {
                 if (operation) {
                     console.log(this.toString() + `并执行命令` + cmd + `成功`);
                     options.cmdResult += `<div><span class="text-warning">` + this.toString() + `并执行命令` + cmd + `成功</span></div>`;
                     operation(options);
                 }
-            }).on('data', data => {
-                if (bData == false) {
+            }).on('data', (data) => {
+                if (bData === false) {
                     bData = true;
                     stream.write(cmd);
                     stream.end();
@@ -83,7 +83,7 @@ export class SshClient extends Client {
                 if (options) {
                     options.cmdResult += `<div><span class="text-info">` + data + `</span></div>`;
                 }
-            }).stderr.on('data', data => {
+            }).stderr.on('data', (data) => {
                 console.log(`发生了错误:` + data);
             });
         });
