@@ -1,6 +1,6 @@
+import { Entry } from '../Entry';
 import * as express from 'express';
 import { NextFunction, Request, Response, Router } from '~express/lib/express';
-import { Entry } from '../Entry';
 
 export class LinkRouter {
     protected router = express.Router();
@@ -17,7 +17,7 @@ export class LinkRouter {
             res.render('index', {
                 title: "大前置管理",
                 configs: Entry.entry.gxpIPs,
-                navbarIndex: "1",
+                navbarIndex: "1"
             });
         });
     }
@@ -26,7 +26,7 @@ export class LinkRouter {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-        res.header("X-Powered-By", ' 3.2.1');
+        res.header("X-Powered-By", ' 3.2.1')
         res.header("Content-Type", "application/json;charset=utf-8");
     }
 }

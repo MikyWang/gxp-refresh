@@ -1,38 +1,86 @@
 {
-    "configs": [{
+    "configs": [
+        {
             "name": "GXP开发环境一",
             "ip": "10.16.51.63",
-            "enname": "dev63"
+            "enname": "dev63",
+            "isDev": true
         },
         {
             "name": "GXP开发环境二",
             "ip": "10.20.161.99",
-            "enname": "dev99"
+            "enname": "dev99",
+            "isDev": true
         },
         {
             "name": "GXP开发环境三",
             "ip": "10.19.131.48",
-            "enname": "dev48"
+            "enname": "dev48",
+            "isDev": true
         },
         {
             "name": "GXP版本一",
             "ip": "10.20.161.103",
-            "enname": "verONE"
+            "enname": "verONE",
+            "isDev": false
         },
         {
             "name": "GXP版本二",
             "ip": "10.16.51.153",
-            "enname": "verTWO"
+            "enname": "verTWO",
+            "isDev": false
         },
         {
             "name": "GXP版本三",
             "ip": "10.20.161.91",
-            "enname": "verTHREE"
+            "enname": "verTHREE",
+            "isDev": false
         },
         {
             "name": "GXP版本四",
             "ip": "10.20.161.35",
-            "enname": "verFOUR"
+            "enname": "verFOUR",
+            "isDev": false
+        },
+        {
+            "name": "GXP准生产",
+            "ip": "10.19.131.41",
+            "enname": "PROD",
+            "isDev": false
+        }
+    ],
+    "cnapconfig": [
+        {
+            "name": "32二代（87同城）",
+            "ip": "10.20.161.32",
+            "enname": "cnaps32",
+            "tcflag": true,
+            "tcip": "10.16.51.87",
+            "cnapsflag": true
+        },
+        {
+            "name": "31二代",
+            "ip": "10.20.161.31",
+            "enname": "cnaps31",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true
+        },
+        {
+            "name": "23二代",
+            "ip": "10.20.161.23",
+            "enname": "cnaps23",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true
+        },
+        {
+            "name": "40二代",
+            "ip": "10.20.161.40",
+            "enname": "cnaps40",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true
         }
     ]
 }

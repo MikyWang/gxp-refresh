@@ -4,7 +4,7 @@ export class ItemList {
     public isNeedSearch: boolean;
     public searchText: string;
     public searchEventName: string;
-    public groupItems: GroupItem[];
+    public groupItems: Array<GroupItem>;
     public clickEventName: string;
     public headerId: string;
 

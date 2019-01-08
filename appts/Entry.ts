@@ -1,17 +1,20 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import * as xml2js from 'xml2js';
+import * as path from 'path';
+import * as fs from 'fs';
 import { GxpEnv } from './models/gxpEnv';
-import { GxpRouter } from './routers/GxpRouter';
 import { LinkRouter } from './routers/linkRouter';
-// tslint:disable-next-line:variable-name
-const RouterType = [LinkRouter, GxpRouter];
+import { GxpRouter } from './routers/GxpRouter';
+import { TestRouter } from './routers/TestRouter';
+import { GapsEnv } from './models/gapsEnv';
+import { GapsRouter } from './routers/gapsRouter';
+const RouterType = [LinkRouter, GxpRouter, GapsRouter, TestRouter];
 
 export class Entry {
 
     private static _entry: Entry;
     private _routers: LinkRouter[];
-    private _gxpIPs: GxpEnv[];
+    private _gxpIPs: Array<GxpEnv>;
+    private _gapsEnvs: Array<GapsEnv>;
     private static _rootdir: string = path.join(__dirname, '../');
     private _xmlParser: xml2js.Parser;
     private _xmlBuilder: xml2js.Builder;
@@ -26,14 +29,21 @@ export class Entry {
         return this._routers;
     }
 
+    public get GapsEnvs(): GapsEnv[] {
+        this._gapsEnvs = [];
+        let configs: any[] = JSON.parse(fs.readFileSync(path.join(__dirname, '../envconfig.json'), "utf-8")).cnapconfig;
+        configs.forEach(config => {
+            this._gapsEnvs.push(new GapsEnv(config.ip, config.name, config.enname, config.tcflag, config.tcip, config.cnapsflag));
+        });
+        return this._gapsEnvs;
+    }
+
     public get gxpIPs() {
-        if (!this._gxpIPs) {
-            this._gxpIPs = [];
-            const configs = JSON.parse(fs.readFileSync(path.join(__dirname, '../envconfig.json'), "utf-8")).configs;
-            configs.forEach((config) => {
-                this._gxpIPs.push(new GxpEnv(config.name, config.ip, config.enname));
-            });
-        }
+        this._gxpIPs = [];
+        let configs = JSON.parse(fs.readFileSync(path.join(__dirname, '../envconfig.json'), "utf-8")).configs;
+        configs.forEach(config => {
+            this._gxpIPs.push(new GxpEnv(config.name, config.ip, config.enname, config.isDev));
+        });
         return this._gxpIPs;
     }
 
@@ -51,8 +61,8 @@ export class Entry {
 
     public InitRouters(routers) {
         this._routers = [];
-        routers.forEach((router) => {
-            this._routers.push(new router());
+        routers.forEach(router => {
+            this._routers.push(new router);
         });
     }
 
