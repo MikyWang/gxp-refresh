@@ -28,7 +28,6 @@ function getAllLinkedGXP() {
         }
     });
 }
-
 function getGxpIP() {
     let envName = $.cookie('envname');
     $.ajax({
@@ -199,4 +198,29 @@ function switchModal(title, body, isNeedFooter) {
         $('#modalFooter').hide();
     }
     $('#modal').modal('toggle');
+}
+
+
+function submitDxzp(element) {
+    switchModal('正在添加', '正在添加名单至' + $.cookie('envname') + '环境&hellip;', false);
+    $.ajax({
+        url: ServiceIP + `gaps/submitDxzp?envName=` + $.cookie('envname'),
+        type: "POST",
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+            cardType: $('select#cardtype').val(),
+            mdData: $('input#mddata').val(),
+            busType: $('select#bustype').val(),
+            mdName: $('input#mdname').val(),
+        }),
+        success: function (data) {
+            switchModal('正在添加', '正在添加' + $.cookie('envname') + '环境&hellip;', false);
+            $('#dxzpResult').html(data.cmdResult);
+            $('#dxzpModify').show();
+        },
+        error: err => {
+            switchModal('添加失败', '添加名单失败', true);
+        }
+    });
 }

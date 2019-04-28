@@ -18,6 +18,23 @@ export class ItemList {
     }
 }
 
+export class FormData {
+
+    public id: string;
+    public name: string;
+    public type: string;
+    public value: any;
+    public readonly: boolean;
+
+    constructor(id: string, name: string, type: string, value: any, readonly: boolean) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.value = value;
+        this.readonly = readonly;
+    }
+}
+
 export class GroupItem {
 
     public itemName: string;

@@ -1,5 +1,5 @@
 import { SshClient } from "./sshClient";
-import { SFTPType } from "../Enums";
+import { SFTPType, DXZPTpye } from "../Enums";
 import { INIHelper } from "../helpers/INIHelper";
 import { GxpEnv } from "./gxpEnv";
 import { GapsHelper } from "../helpers/gapsHelper";
@@ -14,21 +14,25 @@ export class GapsEnv {
     private _cnapsflag: boolean;
     private _tcflag: boolean;
     private _tcIPs: string[];
+    private _user: string;
+    private _password: string;
 
     public port: number = 22;
-    public user: string = 'gaps';
-    public password: string = 'gaps';
 
-    constructor(ip: string, name: string, enname: string, tcflag: boolean, tcips: string, cnapsFlag: boolean) {
+
+    constructor(ip: string, name: string, enname: string, tcflag: boolean, tcips: string, cnapsFlag: boolean, user: string, password: string) {
         this._ip = ip;
         this._name = name;
         this._enname = enname;
         this._tcflag = tcflag;
         this._tcIPs = tcips.split(',');
         this._cnapsflag = cnapsFlag;
+        this._user = user;
+        this._password = password;
     }
 
-
+    public get user(): string { return this._user; }
+    public get password(): string { return this._password; }
     public get tcFlag(): boolean { return this._tcflag; }
     public get tcIPs(): string[] { return this._tcIPs };
     public get cnapsFlag(): boolean { return this._cnapsflag };
@@ -146,6 +150,35 @@ export class GapsEnv {
         return promise;
     }
 
+    public async addDXZP(busType: DXZPTpye, cardType: string, info: IDXZPInfo): Promise<IOption> {
+        if (this.cnapsFlag) return new Promise<IOption>(resolve => { resolve({ cmdResult: '非中间业务平台无法使用' }) });
+        let db = await this.getDBConfig();
+        if (cardType == 'id') info.account = `1_` + info.account;
+        let cmdFileContent = `set heading off;\n`;
+        cmdFileContent += `select mddata,mdname from yw_dxzp_` + (busType == DXZPTpye.black ? `black` : `gray`)
+            + `_list where mddata='` + info.account + `';\n`;
+        cmdFileContent += `insert into yw_dxzp_` + (busType == DXZPTpye.black ? `black` : `gray`) + `_list (XXLX, MDDATA, DTLY, AJLX, MDNAME, ORGCODE, GALXRXM, GALXRDH, GASHSJ, KKSJ, YXRQ, MDSM, EXTFLD) values ('0', '`
+            + info.account + `', '1234', '01', '` + info.name + `', '111973889', '` + info.name + `', '13971011778', '20180921', '20170920', '60', '123', null);\n`;
+        cmdFileContent += `commit;\n`;
+        cmdFileContent += `select mddata,mdname from yw_dxzp_` + (busType == DXZPTpye.black ? `black` : `gray`)
+            + `_list where mddata='` + info.account + `';\n`;
+        cmdFileContent += `exit;\n`;
+        let cmdFile = await GapsHelper.sendCmdFile(this, cmdFileContent, true);
+        let cmd = `sqlplus -S ` + db.user + '/' + db.password + '@' + db.dbName + `<tmp/` + cmdFile + '\n sleep 1\n exit\n';
+        let promise = new Promise<IOption>(resolve => {
+            let sshClient = this.getSshClient();
+            sshClient.startConnection(option => {
+                sshClient.callShell(cmd, option => {
+                    sshClient.stopConnection();
+                    resolve(option);
+                }, option);
+            }, { cmdResult: '' });
+        });
+        return promise;
+    }
+
+
+
     public async changeTCConfig(enname: string, tcIP: string): Promise<IOption> {
         if (!this._tcflag) return new Promise<IOption>(resolve => { resolve({ cmdResult: '非二代同城环境暂无法使用' }) });
         let option: IOption = { cmdResult: '' };
@@ -162,6 +195,7 @@ export class GapsEnv {
         });
         return promise;
     }
+
 
 
 }

@@ -1,0 +1,29 @@
+extends layout
+block content
+    .container
+        .row
+            .col-md-3
+                .row
+                    include includes/list
+                    +AddList(IPList)
+            .col-md-8.col-md-offset-1
+                .row
+                    .panel.panel-default
+                        .panel-body
+                            form.form-inline
+                                .form-group
+                                    label(for="serialnum") 支付流水号：
+                                    input(id="serialnum" style="margin-right:10px").form-control
+                                    button.btn.btn-primary(id='submit' type="button" onclick="searchTrans(this)")
+                                        span(class="glyphicon glyphicon-ok" aria-hidden="true")
+                                            | &nbsp
+                                        span
+                                            | 提交
+                .row
+                    ul.nav.nav-tabs
+                        li(role="presentation").active
+                            a(href="#") Home
+                        li(role="presentation")
+                            a(href="#") Home
+                        li(role="presentation")
+                            a(href="#") Home

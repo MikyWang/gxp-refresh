@@ -11,14 +11,32 @@ mixin OptionActive(navIndex)
     +navOption("环境重置","/gxp/refresh",true)
     +navOption("地址及端口修改","/gxp/modify?envName=dev63",false)
     +navOption("二代环境管理","/gaps/cnaps-modify?envName=cnaps32",false)
+    +navOption("电信诈骗黑灰名单维护","/gaps/dxzp?envName=gaps36",false)
+    +navOption("二代来往帐日志快速定位","/gaps/cnaps-logs?envName=cnaps32",false)
   if navIndex=="2"
     +navOption("环境重置","/gxp/refresh",false)
     +navOption("地址及端口修改","/gxp/modify?envName=dev63",true)
     +navOption("二代环境管理","/gaps/cnaps-modify?envName=cnaps32",false)
+    +navOption("电信诈骗黑灰名单维护","/gaps/dxzp?envName=gaps36",false)
+    +navOption("二代来往帐日志快速定位","/gaps/cnaps-logs?envName=cnaps32",false)
   if navIndex=="3"
     +navOption("环境重置","/gxp/refresh",false)
     +navOption("地址及端口修改","/gxp/modify?envName=dev63",false)
     +navOption("二代环境管理","/gaps/cnaps-modify?envName=cnaps32",true)
+    +navOption("电信诈骗黑灰名单维护","/gaps/dxzp?envName=gaps36",false)
+    +navOption("二代来往帐日志快速定位","/gaps/cnaps-logs?envName=cnaps32",false)
+  if navIndex=="4"
+    +navOption("环境重置","/gxp/refresh",false)
+    +navOption("地址及端口修改","/gxp/modify?envName=dev63",false)
+    +navOption("二代环境管理","/gaps/cnaps-modify?envName=cnaps32",false)
+    +navOption("电信诈骗黑灰名单维护","/gaps/dxzp?envName=gaps36",true)
+    +navOption("二代来往帐日志快速定位","/gaps/cnaps-logs?envName=cnaps32",false)
+  if navIndex=="5"
+    +navOption("环境重置","/gxp/refresh",false)
+    +navOption("地址及端口修改","/gxp/modify?envName=dev63",false)
+    +navOption("二代环境管理","/gaps/cnaps-modify?envName=cnaps32",false)
+    +navOption("电信诈骗黑灰名单维护","/gaps/dxzp?envName=gaps36",false)
+    +navOption("二代来往帐日志快速定位","/gaps/cnaps-logs?envName=cnaps32",true)
 
 nav.navbar.navbar-default.navbar-fixed-top
       .container

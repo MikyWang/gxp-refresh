@@ -8,17 +8,17 @@ block content
                     +AddList(IPList)
                 .row
                    .panel.panel-default
-                    .panel-heading
-                        h3.panel-title.text-center
-                            | 二代对应GXP环境
-                    .panel-body(id="cnapsLinkGxp")
-                        form.form-horizontal
-                            each item,i in linkedInfo
-                                .form-group
-                                    label(for="cnapsName").col-md-2.control-label
-                                        span #{item.enname}:
-                                    label(for="gxpIp").col-md-10.control-label
-                                        span.text-danger(id="#{item.enname}") 正在加载...
+                        .panel-heading
+                            h3.panel-title.text-center
+                                | 二代对应GXP环境
+                        .panel-body(id="cnapsLinkGxp")
+                            form.form-horizontal
+                                each item,i in linkedInfo
+                                    .form-group
+                                        label(for="cnapsName").col-md-2.control-label
+                                            span #{item.enname}:
+                                        label(for="gxpIp").col-md-10.control-label
+                                            span.text-danger(id="#{item.enname}") 正在加载...
             .col-md-5#detail
                 include detail
             .col-md-4(id="cnapsRefresh" style="display:none")

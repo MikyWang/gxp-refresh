@@ -7,3 +7,13 @@ export enum DeviceType {
     OCA,
     ALL
 }
+
+export enum FieldType {
+    Req,
+    Resp
+}
+
+export enum DXZPTpye {
+    black,
+    gray
+}

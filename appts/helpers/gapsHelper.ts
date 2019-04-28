@@ -5,6 +5,7 @@ import { SshClient } from "../models/sshClient";
 import { SFTPType, DeviceType } from "../Enums";
 import { GxpEnv } from "../models/gxpEnv";
 import { GXPHelper } from "./gxpHelper";
+import * as icov from 'iconv-lite';
 
 export class GapsHelper {
 
@@ -20,11 +21,17 @@ export class GapsHelper {
         return CurrentGaps.shift();
     }
 
-    public static async sendCmdFile(currentGaps: GapsEnv, cmd: string): Promise<string> {
+    public static async sendCmdFile(currentGaps: GapsEnv, cmd: string, isConvert?: boolean): Promise<string> {
+        isConvert = isConvert || false;
         let opt: IOption = { cmdResult: '' };
         let cmdFile = this.genCmdFileName();
         let dir = 'tmp/' + cmdFile;
-        fs.writeFileSync(Entry.rootdir + '/' + dir, cmd);
+        if (isConvert) {
+            let content = icov.encode(cmd, 'gb18030');
+            fs.writeFileSync(Entry.rootdir + '/' + dir, content);
+        } else {
+            fs.writeFileSync(Entry.rootdir + '/' + dir, cmd);
+        }
         let promise = new Promise<string>(resolve => {
             let sshClient = new SshClient(currentGaps.ip, currentGaps.port, currentGaps.user, currentGaps.password);
             sshClient.startConnection(option => {
@@ -51,6 +58,10 @@ export class GapsHelper {
                 resolve('成功保存配置文件!');
             });
         });
+    }
+
+    public static async GetLog(currentGaps: GapsEnv, serialNum?: string): Promise<IOption> {
+        return null;
     }
 
     public static async RefreshCnaps(currentGaps: GapsEnv, currentGxp: GxpEnv): Promise<IOption> {

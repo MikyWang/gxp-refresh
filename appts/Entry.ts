@@ -7,7 +7,8 @@ import { GxpRouter } from './routers/GxpRouter';
 import { TestRouter } from './routers/TestRouter';
 import { GapsEnv } from './models/gapsEnv';
 import { GapsRouter } from './routers/gapsRouter';
-const RouterType = [LinkRouter, GxpRouter, GapsRouter, TestRouter];
+import { ESBRouter } from './routers/esbRouter';
+const RouterType = [LinkRouter, GxpRouter, GapsRouter, ESBRouter, TestRouter];
 
 export class Entry {
 
@@ -33,7 +34,7 @@ export class Entry {
         this._gapsEnvs = [];
         let configs: any[] = JSON.parse(fs.readFileSync(path.join(__dirname, '../envconfig.json'), "utf-8")).cnapconfig;
         configs.forEach(config => {
-            this._gapsEnvs.push(new GapsEnv(config.ip, config.name, config.enname, config.tcflag, config.tcip, config.cnapsflag));
+            this._gapsEnvs.push(new GapsEnv(config.ip, config.name, config.enname, config.tcflag, config.tcip, config.cnapsflag, config.user, config.password));
         });
         return this._gapsEnvs;
     }

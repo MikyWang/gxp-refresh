@@ -47,6 +47,18 @@
             "ip": "10.19.131.41",
             "enname": "PROD",
             "isDev": false
+        },
+        {
+            "name": "GXP外联开发",
+            "ip": "10.19.131.18",
+            "enname": "wl18",
+            "isDev": true
+        },
+        {
+            "name": "GXP外联准生产",
+            "ip": "10.19.131.43",
+            "enname": "wl43",
+            "isDev": false
         }
     ],
     "cnapconfig": [
@@ -56,7 +68,9 @@
             "enname": "cnaps32",
             "tcflag": true,
             "tcip": "10.16.51.87",
-            "cnapsflag": true
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gaps"
         },
         {
             "name": "31二代",
@@ -64,7 +78,9 @@
             "enname": "cnaps31",
             "tcflag": false,
             "tcip": "",
-            "cnapsflag": true
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gaps"
         },
         {
             "name": "23二代",
@@ -72,7 +88,19 @@
             "enname": "cnaps23",
             "tcflag": false,
             "tcip": "",
-            "cnapsflag": true
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gaps"
+        },
+        {
+            "name": "39二代",
+            "ip": "10.20.161.39",
+            "enname": "cnaps39",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gaps"
         },
         {
             "name": "40二代",
@@ -80,7 +108,79 @@
             "enname": "cnaps40",
             "tcflag": false,
             "tcip": "",
-            "cnapsflag": true
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gaps"
+        },
+        {
+            "name": "赣州银行GAPS开发一",
+            "ip": "10.16.51.36",
+            "enname": "gaps36",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "tgaps",
+            "password": "tgaps"
+        },
+        {
+            "name": "赣州银行GAPS开发二",
+            "ip": "10.16.51.37",
+            "enname": "gaps37",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "tgaps",
+            "password": "tgaps"
+        },
+        {
+            "name": "赣州银行GAPS版本一",
+            "ip": "10.20.161.61",
+            "enname": "gapsbb1",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "gaps",
+            "password": "gaps"
+        },
+        {
+            "name": "赣州银行GAPS版本二",
+            "ip": "10.20.161.51",
+            "enname": "gapsbb2",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "gaps",
+            "password": "gaps"
+        },
+        {
+            "name": "赣州银行GAPS版本三",
+            "ip": "10.16.51.31",
+            "enname": "gapsbb3",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "gaps",
+            "password": "gaps"
+        },
+        {
+            "name": "赣州银行GAPS版本四",
+            "ip": "10.20.161.55",
+            "enname": "gapsbb4",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "gaps",
+            "password": "gaps"
+        },
+        {
+            "name": "赣州银行GAPS准生产",
+            "ip": "10.20.161.62",
+            "enname": "gapszsc",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "gaps",
+            "password": "gaps"
         }
     ]
 }

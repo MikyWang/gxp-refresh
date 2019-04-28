@@ -59,9 +59,10 @@ export class GXPHelper {
         let currentGxpConfig = GXPHelper.CurrentGxpConfig(currentGxp);
         let isDefault = true;
         if (isSearching) {
-            let regex = new RegExp(`.*` + searchText.toUpperCase() + `.*`);
-            let icaConfigs = currentGxpConfig.icaconf[0].ica.filter(ica => regex.test(ica.$.id));
-            let ocaConfigs = currentGxpConfig.ocaconf[0].oca.filter(oca => regex.test(oca.$.id));
+            let regexU = new RegExp(`.*` + searchText.toUpperCase() + `.*`);
+            let regexL = new RegExp(`.*` + searchText.toLowerCase() + `.*`);
+            let icaConfigs = currentGxpConfig.icaconf[0].ica.filter(ica => regexU.test(ica.$.id) || regexL.test(ica.$.id));
+            let ocaConfigs = currentGxpConfig.ocaconf[0].oca.filter(oca => regexU.test(oca.$.id) || regexL.test(oca.$.id));
             if (icaConfigs.length > 0) {
                 icaConfigs.forEach(element => {
                     device.groupItems.push(new GroupItem(element.$.id, isDefault));

@@ -1,3 +1,4 @@
+
 interface $ {
     //public
     id: string;
@@ -87,9 +88,33 @@ interface ICnapsPanel {
 
 }
 
+interface IDXZPRequest {
+    cardType: string;
+    mdData: string;
+    busType: string;
+    mdName: string;
+}
+
 interface IMap {
     key: string;
     value: any;
     comment?: string;
 }
 
+
+interface ITransInfo {
+    transName: string;
+    transCode: string;
+    transPro: string;
+    transSece: string;
+    transFlow?: string;
+    transUser: string;
+    transCtra: string;
+    transCtph: string;
+    extField?: string;
+}
+
+interface IDXZPInfo {
+    account: string;
+    name: string;
+}
