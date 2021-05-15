@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+	<pub>
+		<appid>ccms</appid>
+		<transcode>962040</transcode>
+		<provno></provno>
+		<transdep>289000</transdep>
+		<operator></operator>
+		<transdate></transdate>
+		<transtime></transtime>
+		<channelid>9002020</channelid>
+		<termnum></termnum>
+		<channelseq></channelseq>
+		<auther></auther>
+		<jiaoyima></jiaoyima>
+	</pub>
+	<hupp>
+		<syscd>hvps</syscd>
+		<oribusinum>2020042605683228</oribusinum>
+		<businum></businum>
+	</hupp>
+</root>

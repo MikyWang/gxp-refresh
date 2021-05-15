@@ -77,15 +77,37 @@ interface IOracledb {
 
 interface IOption {
     cmdResult: string;
+    cmdFile?: string;
+    iOracledb?: IOracledb;
+    data?: string[];
+}
+
+interface ILog {
+    data: string;
+    ready: boolean;
 }
 
 interface ICnapsPanel {
-    orgGxpIP: string;
-    orgMan: string;
-    orgNote: string;
-    orgDate: string;
-    clientIP: string;
+    ip?: string;
+    enname?: string;
+    name?: string;
+    gxpIP: string;
+    gxpName?: string;
+    simulator: string;
+    console: string;
+}
 
+interface IDXZPRequest {
+    cardType: string;
+    mdData: string;
+    busType: string;
+    mdName: string;
+}
+
+interface ICnapsRecordRequest {
+    businum: string;
+    tableName: string;
+    counts: number;
 }
 
 interface IDXZPRequest {
@@ -117,4 +139,11 @@ interface ITransInfo {
 interface IDXZPInfo {
     account: string;
     name: string;
+}
+
+interface ITransRequest {
+    env: string;
+    trans: string;
+    request: string;
+    sys?: string;
 }

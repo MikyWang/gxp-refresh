@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='GBK'?>
+<root>
+	<pub>
+		<appid>hvps</appid>
+		<transcode>700301</transcode>
+		<provno />
+		<transdep>0000288000</transdep>
+		<operator>120087</operator>
+		<transdate>20191017</transdate>
+		<transtime>171500</transtime>
+		<channelid>9002052</channelid>
+		<termnum>YQ</termnum>
+		<channelseq>20210119153431757</channelseq>
+		<auther />
+		<jiaoyima>5101</jiaoyima>
+	</pub>
+	<hupp>
+		<interfacetp>2</interfacetp>
+		<businum />
+		<msgtp>hvps.111.001.01</msgtp>
+		<recvbkid>102100099996</recvbkid>
+		<txtpcd>A100</txtpcd>
+		<txctgypurpcd />
+		<ccy>CNY</ccy>
+		<amt>50000.00</amt>
+		<feeamt>0</feeamt>
+		<feetflagcollect>1</feetflagcollect>
+		<feeflagtransfer>0</feeflagtransfer>
+		<doubleflag>1</doubleflag>
+		<trntype>1</trntype>
+		<txsttlmprty>HIGH</txsttlmprty>
+		<payeraccno>2880000103010000243</payeraccno>
+		<payername>赣州深燃天然气有限公司</payername>
+		<payeraddr />
+		<payerbkid />
+		<payerbknm />
+		<rcveraccno>621226888888888888</rcveraccno>
+		<rcvername>工商银</rcvername>
+		<rcveraddr />
+		<rcverbkid>313428028866</rcverbkid>
+		<rcverbknm>中国工商银行股份有限公司南昌北京西路支行</rcverbknm>
+		<ps>银企直联转账</ps>
+		<ps2 />
+		<addword>银企直联转账</addword>
+		<addword2 />
+		<checkoper />
+		<intermediarybkid1 />
+		<Intermediarybkid2 />
+		<excsendflg>1</excsendflg>
+		<addinfo_gk />
+		<authpasswd />
+		<zftj />
+		<passwd />
+		<cardseq />
+		<payersttlmacct />
+		<payersttlmacctnm />
+		<send_flag>1</send_flag>
+		<gzauthflag/>
+	</hupp>
+</root>

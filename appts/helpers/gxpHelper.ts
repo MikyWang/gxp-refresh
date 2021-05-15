@@ -14,18 +14,17 @@ export class GXPHelper {
         return CurrentGxps.shift();
     }
 
-    public static RefreshEnviroment(currentGxp: GxpEnv, callback: Function, options: any) {
-        currentGxp.uploadOrGetConfigure(SFTPType.get, option => {
-            let backConfig = new GxpConfig();
-            let updateConfig = new GxpConfig();
-            backConfig.convertToModel(currentGxp.backupConfigFileName);
-            updateConfig.convertToModel(currentGxp.tmpConfigFileName);
-            backConfig.updateConfig(updateConfig);
-            backConfig.convertToXmlFile(currentGxp.backupConfigFileName);
-            currentGxp.uploadOrGetConfigure(SFTPType.put, opt => {
-                currentGxp.restartService(callback, opt);
-            }, option);
-        }, options);
+    public static async RefreshEnviroment(currentGxp: GxpEnv): Promise<IOption> {
+        let option = await currentGxp.uploadOrGetConfigure(SFTPType.get);
+        let backConfig = new GxpConfig();
+        let updateConfig = new GxpConfig();
+        backConfig.convertToModel(currentGxp.backupConfigFileName);
+        updateConfig.convertToModel(currentGxp.tmpConfigFileName);
+        backConfig.updateConfig(updateConfig);
+        backConfig.convertToXmlFile(currentGxp.backupConfigFileName);
+        option.cmdResult += (await currentGxp.uploadOrGetConfigure(SFTPType.put)).cmdResult;
+        option.cmdResult += (await currentGxp.restartService()).cmdResult;
+        return option;
     }
 
     public static CurrentGxpConfig(currentGxp: GxpEnv): GxpConfig {

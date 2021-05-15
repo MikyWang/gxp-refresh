@@ -1,4 +1,7 @@
 const ServiceIP = `/`;
+<<<<<<< HEAD
+$.cookie('eventId', 0);
+=======
 
 $(document).ready(() => {
     let gxpFlag = $.cookie('gxpFlag');
@@ -46,6 +49,7 @@ function getGxpIP() {
         }
     })
 }
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
 
 function refreshEnv(element) {
     var id = $(element).attr('id');
@@ -100,36 +104,13 @@ function submitDevice(element) {
             }
         },
         success: function (data) {
+            $.cookie('eventId', 1);
             switchModal('修改配置', '修改成功', true);
         }
     });
 }
 
-function submitCnaps(element) {
-    switchModal('正在修改', '正在修改二代环境' + $.cookie('envname') + '&hellip;', false);
-    $.ajax({
-        url: ServiceIP + `gaps/submitCnaps?envName=` + $.cookie('envname'),
-        type: "POST",
-        async: true,
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify({
-            orgGxpIP: $('select#GxpIP').val(),
-            orgMan: $('input#submitName').val(),
-            orgNote: $('input#submitNote').val(),
-            orgDate: $('input#submitDate').val(),
-            clientIP: $('input#submitIP').val()
-        }),
-        success: function (data) {
-            switchModal('正在修改', '正在修改二代环境' + $.cookie('envname') + '&hellip;', false);
-            $('#cnapsRefreshResult').html(data.cmdResult);
-            $('#cnapsRefresh').show();
-            getGxpIP();
-        },
-        error: err => {
-            switchModal('修改失败', '修改配置失败', true);
-        }
-    });
-}
+
 
 function chooseConfig(element) {
     $(element).parent().children().removeClass('active');
@@ -165,6 +146,47 @@ function searchDevice(element) {
     });
 }
 
+function modalEvent(element) {
+    switchModal();
+    setTimeout(() => {
+        const eventId = Number.parseInt($.cookie('eventId'));
+        switch (eventId) {
+            case 1:
+                $.cookie('eventId', 2);
+                switchModal('重启环境', '是否立即生效？', true);
+                break;
+            case 2:
+                const envName = $.cookie('envname');
+                $.cookie('eventId', 0);
+                switchModal('正在重启', '正在重启环境' + envName + '&hellip;', false);
+                $.ajax({
+                    type: "POST",
+                    url: ServiceIP + 'gxp/resolveRefresh',
+                    async: true,
+                    data: { enname: envName },
+                    success: function (data) {
+                        switchModal();
+                        setTimeout(() => {
+                            switchModal('重启环境成功', data.result, false);
+                        }, 500);
+                    },
+                    error: function (a, error, stack) {
+                        switchModal();
+                        setTimeout(() => {
+                            switchModal('重启环境失败', error, false);
+                        }, 500);
+                    }
+                });
+                break;
+            case 3:
+                $.cookie('eventId', 0);
+                uploadTrans();
+                break;
+            default:
+                break;
+        }
+    }, 500);
+}
 
 function chooseDevice(element) {
     $(element).parent().children().removeClass('active');
@@ -223,4 +245,56 @@ function submitDxzp(element) {
             switchModal('添加失败', '添加名单失败', true);
         }
     });
+<<<<<<< HEAD
 }
+
+function deleteDxzp(element) {
+    switchModal('删除名单', '正在删除&hellip;', false);
+    $.ajax({
+        url: ServiceIP + `gaps/deleteDxzp?envName=` + $.cookie('envname'),
+        type: "POST",
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+            cardType: $('select#cardtype').val(),
+            mdData: $('input#mddata').val(),
+            busType: $('select#bustype').val(),
+            mdName: $('input#mdname').val(),
+        }),
+        success: function (data) {
+            switchModal('删除名单', '正在删除&hellip;', false);
+            $('#dxzpResult').html(data.cmdResult);
+            $('#dxzpModify').show();
+        },
+        error: err => {
+            switchModal('删除失败', '删除名单失败', true);
+        }
+    });
+}
+
+function deleteAllDxzp(element) {
+    switchModal('清空名单', '正在清空&hellip;', false);
+    $.ajax({
+        url: ServiceIP + `gaps/deleteAllDxzp?envName=` + $.cookie('envname'),
+        type: "POST",
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+            cardType: $('select#cardtype').val(),
+            mdData: $('input#mddata').val(),
+            busType: $('select#bustype').val(),
+            mdName: $('input#mdname').val(),
+        }),
+        success: function (data) {
+            switchModal('清空名单', '正在清空&hellip;', false);
+            $('#dxzpResult').html(data.cmdResult);
+            $('#dxzpModify').show();
+        },
+        error: err => {
+            switchModal('清空失败', '清空名单失败', true);
+        }
+    });
+}
+=======
+}
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0

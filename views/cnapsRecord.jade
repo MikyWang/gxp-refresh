@@ -1,0 +1,35 @@
+extends layout
+block content
+    .container
+        .row
+            .col-md-3
+                    include includes/list
+                    +AddList(IPList)
+            .col-md-9
+                .panel.panel-default
+                    .panel-heading
+                        h3.panel-title.text-center
+                            | 二代支付流水管理
+                    .panel-body
+                        form.form-horizontal
+                            .form-group
+                                label(for="#businum").col-md-2.control-label
+                                    span 业务流水号:
+                                .col-md-4
+                                    input(id="businum" type="text" value='' placeholder='留空搜索最近10笔记录').form-control
+                                .col-md-4
+                                    select#businum.form-control
+                                        option(value="HVPS_EXCHANGE_S" selected) 大额普通贷记往帐
+                                        option(value="HVPS_EXCHANGE_R") 大额普通贷记来账
+                                        option(value="BEPS_NOR_CREDIT_S") 小额普通贷记往帐
+                                        option(value="BEPS_NOR_CREDIT_R") 小额普通贷记来帐
+                                        option(value="HVPS_RTS") 即时转账
+                                .col-md-2
+                                    a.btn.btn-primary.btn-block(type="button" href="#" onclick="queryRecords(this)")
+                                        span(class="glyphicon glyphicon-search" aria-hidden="true")
+                                            | &nbsp
+                                        span
+                                            | 搜索
+                        #recordTable
+    block scripts          
+        script(src='/javascripts/cnapsRecord.js')                            

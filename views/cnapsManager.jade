@@ -1,0 +1,51 @@
+extends layout
+block content
+    .container
+        .row
+            .panel.panel-default
+                .panel-heading
+                    h3.panel-title.text-center
+                        |赣州银行二代环境
+                .panel-body
+                    p.text-center="用于管理二代环境对应系统的各项配置"
+                        table.table.table-hover.table-striped.table-responsive
+                            thead
+                                tr.info
+                                    th.col-md-2.text-center 二代服务器IP
+                                    th.col-md-3.text-center 管理台地址
+                                    th.col-md-3.text-center 仿真地址
+                                    th.col-md-3.text-center GXP地址
+                                    th.col-md-1.text-center 操作
+                            tbody
+                                each item in cnapsPanels
+                                    tr
+                                        td.col-md-2.tdcenter.text-center #{item.ip} -> #{item.name}
+                                        td.td-wrap.col-md-3.tdcenter.text-center
+                                            a(href="#{item.console}" target="_blank")=item.console
+                                        td.td-wrap.col-md-3.tdcenter.text-center
+                                            a(href="#{item.simulator}" target="_blank")=item.simulator
+                                        td.col-md-3.tdcenter.text-center
+                                            select(id='#{item.enname}').form-control
+                                                each gxp,i in GxpIPs
+                                                    if item.gxpIP==gxp.ip
+                                                        option(value='#{gxp.ip}' selected).form-control   #{gxp.name}   ->   #{gxp.ip}
+                                                    else
+                                                        option(value='#{gxp.ip}').form-control   #{gxp.name}   ->   #{gxp.ip}
+                                        td.col-md-1.text-center
+                                            button.btn.btn-primary.btn-block(id='#{item.enname}' type="button" onclick="submitCnaps(this)")
+                                                span(class="glyphicon glyphicon-cog" aria-hidden="true")
+                                                    | &nbsp
+                                                span
+                                                    | 更换GXP
+                                            button.btn.btn-primary.btn-block(id='#{item.enname}' type="button" onclick="RefreshGaps(this)")
+                                                span(class="glyphicon glyphicon-repeat" aria-hidden="true")
+                                                    | &nbsp
+                                                span
+                                                    | 重启GAPS
+                                            button.btn.btn-primary.btn-block(id='#{item.enname}' type="button" onclick="RefreshComm(this)")
+                                                span(class="glyphicon glyphicon-repeat" aria-hidden="true")
+                                                    | &nbsp
+                                                span
+                                                    | 重启收发子系统
+block scripts
+    script(src='/javascripts/cnaps.js')                          

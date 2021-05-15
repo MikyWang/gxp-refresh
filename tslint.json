@@ -5,7 +5,10 @@
     ],
     "jsRules": {},
     "rules": {
-        "max-line-length": [false, 120],
+        "max-line-length": [
+            false,
+            120
+        ],
         "space-before-function-paren": false,
         "no-trailing-whitespace": false,
         "one-line": [
@@ -22,16 +25,36 @@
         ],
         "quotemark": false,
         "prefer-const": true,
-        "no-console": [false, "log", "error"],
-        "max-classes-per-file": [false, 1],
-        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
-        "object-literal-sort-keys": [true, "ignore-case", "match-declaration-order"],
-        "curly": [true, "ignore-same-line"],
+        "no-console": [
+            false,
+            "log",
+            "error"
+        ],
+        "max-classes-per-file": [
+            false,
+            1
+        ],
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-leading-underscore"
+        ],
+        "object-literal-sort-keys": [
+            true,
+            "ignore-case",
+            "match-declaration-order"
+        ],
+        "curly": [
+            true,
+            "ignore-same-line"
+        ],
         "object-literal-shorthand": false,
         "member-ordering": [
             true,
             {
-                "order": [{
+                "order": [
+                    {
                         "name": "static non-private",
                         "kinds": [
                             "public-static-field",
@@ -44,7 +67,8 @@
                 ]
             }
         ]
-
     },
-    "rulesDirectory": ["appts"]
+    "rulesDirectory": [
+        "appts"
+    ]
 }

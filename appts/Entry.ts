@@ -8,7 +8,8 @@ import { TestRouter } from './routers/TestRouter';
 import { GapsEnv } from './models/gapsEnv';
 import { GapsRouter } from './routers/gapsRouter';
 import { ESBRouter } from './routers/esbRouter';
-const RouterType = [LinkRouter, GxpRouter, GapsRouter, ESBRouter, TestRouter];
+import { FileRouter } from './routers/fileRouter';
+const RouterType = [LinkRouter, GxpRouter, GapsRouter, ESBRouter, TestRouter, FileRouter];
 
 export class Entry {
 
@@ -19,6 +20,48 @@ export class Entry {
     private static _rootdir: string = path.join(__dirname, '../');
     private _xmlParser: xml2js.Parser;
     private _xmlBuilder: xml2js.Builder;
+    private _cnapsStatus: Map<string, string>;
+    private _channelName: Map<string, string>;
+    private _gapsSys: Map<string, string>;
+
+    public get GapsSys(): Map<string, string> {
+        if (!this._gapsSys) {
+            this._gapsSys = new Map();
+            const data = fs.readFileSync(Entry.rootdir + 'gapssys.txt', 'utf-8');
+            const configs = data.split('\n');
+            configs.forEach(c => {
+                const fields = c.split(' ');
+                this._gapsSys.set(fields[0], fields[1]);
+            });
+        }
+        return this._gapsSys;
+    }
+
+    public get ChannelName(): Map<string, string> {
+        if (!this._channelName) {
+            this._channelName = new Map();
+            const data = fs.readFileSync(Entry.rootdir + 'channelname.txt', 'utf-8');
+            const configs = data.split('\r\n');
+            configs.forEach(config => {
+                const fields = config.split(' ');
+                this._channelName.set(fields[0], fields[1]);
+            });
+        }
+        return this._channelName;
+    }
+
+    public get CnapsStatus(): Map<string, string> {
+        if (!this._cnapsStatus) {
+            this._cnapsStatus = new Map();
+            const data = fs.readFileSync(Entry.rootdir + 'cnaps/cnapsStatus.txt', 'utf-8');
+            const configs = data.split('\n');
+            configs.forEach(config => {
+                const fields = config.split(' ');
+                this._cnapsStatus.set(fields[0], fields[1]);
+            });
+        }
+        return this._cnapsStatus;
+    }
 
     public static get entry() {
         return this._entry = this._entry || new Entry();
@@ -29,6 +72,9 @@ export class Entry {
         }
         return this._routers;
     }
+
+
+
 
     public get GapsEnvs(): GapsEnv[] {
         this._gapsEnvs = [];
@@ -57,7 +103,10 @@ export class Entry {
     }
 
     public get xmlBuilder() {
-        return this._xmlBuilder = this._xmlBuilder || new xml2js.Builder();
+        let option = xml2js.defaults["0.2"];
+        option.xmldec.encoding = 'GBK';
+        option.xmldec.standalone = null;
+        return this._xmlBuilder = this._xmlBuilder || new xml2js.Builder(option);
     }
 
     public InitRouters(routers) {

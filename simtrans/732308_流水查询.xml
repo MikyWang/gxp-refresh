@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+	<pub>
+		<appid>ccms</appid>
+		<transcode>732308</transcode>
+		<provno></provno>
+		<transdep>0000289000</transdep>
+		<operator>900006</operator>
+		<transdate>20210112</transdate>
+		<transtime>101535</transtime>
+		<channelid>9002010</channelid>
+		<termnum>GM152497</termnum>
+		<channelseq>8888</channelseq>
+		<auther></auther>
+		<jiaoyima>5107</jiaoyima>
+		<cardseq></cardseq>
+		<bankbook></bankbook>
+		<authpasswd_pub></authpasswd_pub>
+	</pub>
+	<hupp>
+		<businum>2021011205693920</businum>
+		<srflag>0</srflag>
+		<payroute></payroute>
+		<sechcode>99</sechcode>
+	</hupp>
+</root>

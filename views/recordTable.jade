@@ -1,0 +1,32 @@
+mixin changeColor(index)
+    if index%2==0
+        tr.success
+            if block
+                block
+    else
+        tr.warning
+            if block
+                block
+
+table.table.table-hover.table-striped.table-responsive
+    thead
+        tr.info
+            th.col-md-2.text-center 业务流水号
+            th.col-md-2.text-center 付款人账号
+            th.col-md-2.text-center 付款人户名
+            th.col-md-2.text-center 交易金额
+            th.col-md-1.text-center 核心状态
+            th.col-md-1.text-center 交易状态   
+            th.col-md-1.text-center 操作
+    tbody
+        each item,i in tbodys
+            +changeColor(i)
+                td.td-wrap.col-md-2.text-center #{item.businum}
+                td.td-wrap.col-md-2.text-center #{item.payeraccno}
+                td.td-wrap.col-md-2.text-center #{item.payername}
+                td.td-wrap.col-md-2.text-center #{item.amt}
+                td.td-wrap.col-md-2.text-center #{item.corebksts}
+                td.td-wrap.col-md-2.text-center #{item.trstatus}
+                td.col-md-1.text-center
+                    a.btn.btn-info(href='#')
+                        span(class="glyphicon glyphicon-cog" aria-hidden="true")

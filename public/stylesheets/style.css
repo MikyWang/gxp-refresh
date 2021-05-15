@@ -2,6 +2,15 @@ body {
     padding-top: 70px;
 }
 
+.td-wrap{
+    word-break:break-all;
+}
+
 * {
     font-family: "microsoft yahei", "Times New Roman", "宋体", Times, serif;
+}
+
+.tdcenter
+{
+    vertical-align: middle !important;
 }

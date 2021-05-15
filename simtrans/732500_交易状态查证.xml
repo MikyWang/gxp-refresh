@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GB2312"?>
+<root>
+	<pub>
+		<appid>hvps</appid>
+		<transcode>732500</transcode>
+		<provno></provno>
+		<transdep>0000287000</transdep>
+		<operator>900074</operator>
+		<transdate>20210113</transdate>
+		<transtime>094000</transtime>
+		<channelid>9002058</channelid>
+		<termnum>YBBF</termnum>
+		<channelseq>21011307080005903918</channelseq>
+		<auther></auther>
+		<jiaoyima>1002</jiaoyima>
+	</pub>
+	<hupp>
+		<transferflowno>20082607080001885396</transferflowno>
+	</hupp>
+</root>

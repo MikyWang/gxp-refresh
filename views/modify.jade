@@ -11,4 +11,14 @@ block content
                 .col-md-6#detail
                     include config
             .col-md-3
-                +AddList(IPList)
+                .panel.panel-default
+                    .panel-heading.text-center(id="#{IPList.headerId}")
+                        h3.panel-title=IPList.title
+                    .list-group(id="#{IPList.title}")
+                        each item,i in IPList.groupItems
+                            if item.isActive==true
+                                a.text-center.list-group-item.active(id="#{item.itemName}" href="#top" onclick="#{IPList.clickEventName}(this)")=item.itemName
+                            else
+                                a.text-center.list-group-item(id="#{item.itemName}" href="#top" onclick="#{IPList.clickEventName}(this)")=item.itemName
+
+                

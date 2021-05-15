@@ -1,7 +1,1 @@
-{
-    "orgGxpIP": "10.19.131.41",
-    "orgMan": "王红英",
-    "orgNote": "需求",
-    "orgDate": "20181212",
-    "clientIP": "::1"
-}
+{"gxpIP":"10.16.51.63","simulator":"人行联调环境","console":"http://10.20.161.23:8080/tamcx"}

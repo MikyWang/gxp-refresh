@@ -1,3 +1,46 @@
+<<<<<<< HEAD
+extends layout
+block content
+    .container
+        .row
+            .col-md-3
+                .row
+                    include includes/list
+                    +AddList(IPList)
+            .col-md-5#form
+                include includes/form
+                .panel.panel-default
+                    .panel-heading
+                        h3.panel-title.text-center #{form.title}
+                    .panel-body
+                        form.form-horizontal
+                            each item,i in form.data
+                                +addRow(item.id,item.name,item.type,item.value,item.readonly)
+                            .form-group
+                                .col-md-offset-2.col-md-3
+                                    button.btn.btn-primary.btn-block(id='submit' type="button" onclick="submitDxzp(this)")
+                                        span(class="glyphicon glyphicon-plus" aria-hidden="true")
+                                            | &nbsp
+                                        span
+                                            | 增加
+                                .col-md-3
+                                    button.btn.btn-primary.btn-block(id='submit' type="button" onclick="deleteDxzp(this)")
+                                        span(class="glyphicon glyphicon-minus" aria-hidden="true")
+                                            | &nbsp
+                                        span
+                                            | 删除
+                                .col-md-3
+                                    button.btn.btn-primary.btn-block(id='submit' type="button" onclick="deleteAllDxzp(this)")
+                                        span(class="glyphicon glyphicon-remove" aria-hidden="true")
+                                            | &nbsp
+                                        span
+                                            | 清空
+            .col-md-4(id="dxzpModify" style="display:none")
+                .panel.panel-default
+                    .panel-heading
+                        h3.panel-title.text-center
+                            | 黑灰名单维护结果
+=======
 extends layout
 block content
     .container
@@ -27,4 +70,5 @@ block content
                     .panel-heading
                         h3.panel-title.text-center
                             | 黑灰名单维护结果
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
                     .panel-body(id="dxzpResult")

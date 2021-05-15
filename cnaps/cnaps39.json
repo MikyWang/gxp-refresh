@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+{"gxpIP":"10.20.161.99","simulator":"http://10.20.162.230:8080/cnapstst/cnapstst/jsp/login.jsp","console":"http://10.20.161.39:8080/tamcx"}
+=======
 {
     "orgGxpIP": "10.19.131.41",
     "orgMan": "王红英",
@@ -5,3 +8,4 @@
     "orgDate": "20181212",
     "clientIP": "::1"
 }
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0

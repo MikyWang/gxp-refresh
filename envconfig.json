@@ -1,25 +1,25 @@
 {
     "configs": [
         {
-            "name": "GXP开发环境一",
+            "name": "GXP开发一",
             "ip": "10.16.51.63",
             "enname": "dev63",
             "isDev": true
         },
         {
-            "name": "GXP开发环境二",
+            "name": "GXP开发二",
             "ip": "10.20.161.99",
             "enname": "dev99",
             "isDev": true
         },
         {
-            "name": "GXP开发环境三",
+            "name": "GXP开发三(信贷C)",
             "ip": "10.19.131.48",
             "enname": "dev48",
             "isDev": true
         },
         {
-            "name": "GXP版本一",
+            "name": "GXP版本一(信贷B)",
             "ip": "10.20.161.103",
             "enname": "verONE",
             "isDev": false
@@ -49,6 +49,39 @@
             "isDev": false
         },
         {
+<<<<<<< HEAD
+            "name": "GXP培训环境",
+            "ip": "10.20.165.11",
+            "enname": "traning",
+            "isDev": false
+        },
+        {
+            "name": "GXP信贷A环境",
+            "ip": "10.20.161.98",
+            "enname": "backup98",
+            "isDev": false
+        },
+        {
+            "name": "GXP信贷D环境",
+            "ip": "10.20.162.108",
+            "enname": "xd108",
+            "isDev": false
+        },
+        {
+            "name": "GXP信贷E环境",
+            "ip": "10.20.162.109",
+            "enname": "xd109",
+            "isDev": false
+        },
+         {
+            "name": "GXP信贷F环境",
+            "ip": "10.20.173.157",
+            "enname": "xd157",
+            "isDev": false
+        },
+        {
+=======
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
             "name": "GXP外联开发",
             "ip": "10.19.131.18",
             "enname": "wl18",
@@ -63,33 +96,109 @@
     ],
     "cnapconfig": [
         {
-            "name": "32二代（87同城）",
-            "ip": "10.20.161.32",
-            "enname": "cnaps32",
-            "tcflag": true,
-            "tcip": "10.16.51.87",
-            "cnapsflag": true,
-            "user": "gaps",
-            "password": "gaps"
-        },
-        {
-            "name": "31二代",
+            "name": "31二代（开发一）",
             "ip": "10.20.161.31",
             "enname": "cnaps31",
             "tcflag": false,
             "tcip": "",
             "cnapsflag": true,
             "user": "gaps",
-            "password": "gaps"
+            "password": "gapsI234"
         },
         {
-            "name": "23二代",
+            "name": "39二代（开发二）",
+            "ip": "10.20.161.39",
+            "enname": "cnaps39",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "63二代（版本一）",
+            "ip": "10.20.160.63",
+            "enname": "cnaps63",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "64二代（版本二）",
+            "ip": "10.20.160.64",
+            "enname": "cnaps64",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "65二代（版本三）",
+            "ip": "10.20.160.65",
+            "enname": "cnaps65",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "66二代（版本四）",
+            "ip": "10.20.160.66",
+            "enname": "cnaps66",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "32二代（准生产）",
+            "ip": "10.20.161.32",
+            "enname": "cnaps32",
+<<<<<<< HEAD
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },       
+=======
+            "tcflag": true,
+            "tcip": "10.16.51.87",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gaps"
+        },
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
+        {
+            "name": "12二代(培训环境)",
+            "ip": "10.20.165.12",
+            "enname": "cnaps-traning",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+<<<<<<< HEAD
+            "password": "gapsI234"
+=======
+            "password": "gaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
+        },
+        {
+            "name": "23二代（人行联调）",
             "ip": "10.20.161.23",
             "enname": "cnaps23",
             "tcflag": false,
             "tcip": "",
             "cnapsflag": true,
             "user": "gaps",
+<<<<<<< HEAD
+            "password": "gapsI234"
+=======
             "password": "gaps"
         },
         {
@@ -101,16 +210,21 @@
             "cnapsflag": true,
             "user": "gaps",
             "password": "gaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
-            "name": "40二代",
+            "name": "40二代（人行验收）",
             "ip": "10.20.161.40",
             "enname": "cnaps40",
             "tcflag": false,
             "tcip": "",
             "cnapsflag": true,
             "user": "gaps",
+<<<<<<< HEAD
+            "password": "gapsI234"
+=======
             "password": "gaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
             "name": "赣州银行GAPS开发一",
@@ -120,7 +234,11 @@
             "tcip": "",
             "cnapsflag": false,
             "user": "tgaps",
+<<<<<<< HEAD
+            "password": "Gzyhtgaps@1234"
+=======
             "password": "tgaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
             "name": "赣州银行GAPS开发二",
@@ -130,7 +248,11 @@
             "tcip": "",
             "cnapsflag": false,
             "user": "tgaps",
+<<<<<<< HEAD
+            "password": "Gzyhtgaps@1234"
+=======
             "password": "tgaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
             "name": "赣州银行GAPS版本一",
@@ -140,7 +262,11 @@
             "tcip": "",
             "cnapsflag": false,
             "user": "gaps",
+<<<<<<< HEAD
+            "password": "Gzyhgaps@1234"
+=======
             "password": "gaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
             "name": "赣州银行GAPS版本二",
@@ -150,7 +276,11 @@
             "tcip": "",
             "cnapsflag": false,
             "user": "gaps",
+<<<<<<< HEAD
+            "password": "Gzyhgaps@1234"
+=======
             "password": "gaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
             "name": "赣州银行GAPS版本三",
@@ -160,7 +290,11 @@
             "tcip": "",
             "cnapsflag": false,
             "user": "gaps",
+<<<<<<< HEAD
+            "password": "Gzyhgaps@1234"
+=======
             "password": "gaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
             "name": "赣州银行GAPS版本四",
@@ -170,7 +304,11 @@
             "tcip": "",
             "cnapsflag": false,
             "user": "gaps",
+<<<<<<< HEAD
+            "password": "Gzyhgaps@1234"
+=======
             "password": "gaps"
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
         },
         {
             "name": "赣州银行GAPS准生产",
@@ -180,7 +318,82 @@
             "tcip": "",
             "cnapsflag": false,
             "user": "gaps",
+<<<<<<< HEAD
+            "password": "Gzyhgaps@1234"
+        },
+        {
+            "name": "赣州银行GAPS培训环境",
+            "ip": "10.20.161.63",
+            "enname": "gaps-traning",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "gaps",
+            "password": "Gzyhgaps@1234"
+        },
+        {
+            "name": "赣州银行GAPS准生产备份",
+            "ip": "10.20.161.69",
+            "enname": "gapszsc-backup",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": false,
+            "user": "gaps",
+            "password": "Gzyhgaps@1234"
+        },
+        {
+            "name": "二代（备用一）",
+            "ip": "10.20.173.57",
+            "enname": "cnapsby1",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "二代（备用二）",
+            "ip": "10.20.161.74",
+            "enname": "cnapsby2",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "二代（备用三）",
+            "ip": "10.20.175.25",
+            "enname": "cnapsby3",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "二代（备用四）",
+            "ip": "10.20.175.40",
+            "enname": "cnapsby4",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        },
+        {
+            "name": "二代（备用五）",
+            "ip": "10.20.175.41",
+            "enname": "cnapsby5",
+            "tcflag": false,
+            "tcip": "",
+            "cnapsflag": true,
+            "user": "gaps",
+            "password": "gapsI234"
+        }        
+=======
             "password": "gaps"
         }
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
     ]
 }

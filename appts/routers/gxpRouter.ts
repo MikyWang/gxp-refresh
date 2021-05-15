@@ -18,7 +18,7 @@ export class GxpRouter extends LinkRouter {
                 navbarIndex: "1"
             });
         });
-        this.router.post('/resolveRefresh', (req: any, res: Response, next: NextFunction) => {
+        this.router.post('/resolveRefresh', async (req: any, res: Response, next: NextFunction) => {
             let envname = req.body.enname;
             this.addAllowOrigin(res);
             let currentGxp = GXPHelper.CurrentGxp(envname);
@@ -26,12 +26,10 @@ export class GxpRouter extends LinkRouter {
                 res.writeHead(404);
                 return res.end('不存在的Id');
             } else {
-                let options = { cmdResult: '' };
-                GXPHelper.RefreshEnviroment(currentGxp, option => {
-                    if (!res.headersSent) {
-                        return res.json({ result: option.cmdResult });
-                    }
-                }, options);
+                let option = await GXPHelper.RefreshEnviroment(currentGxp);
+                if (!res.headersSent) {
+                    return res.json({ result: option.cmdResult });
+                }
             }
         });
         this.router.get('/modify', (req: Request, res: Response, next: NextFunction) => {

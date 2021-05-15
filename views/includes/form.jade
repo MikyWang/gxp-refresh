@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+mixin addRow(id,name,type,value,readonly)
+    .form-group
+        label(for="#{id}" style="word-wrap:break-word").col-md-3.control-label
+            span #{name}:
+        .col-md-9
+            case type
+                when "input"
+                    if readonly==true
+                        input(id="#{id}" type="text" value='#{value}' readonly).form-control
+                    else
+                        input(id="#{id}" type="text" value='#{value}').form-control
+                when "select"
+                    select(id="#{id}").form-control
+                        each item,i in value
+                            option(value='#{item.value}').form-control   #{item.name}
+                when "textarea"
+                    if readonly==true
+                        textarea(id="#{id}" rows="10" readonly).form-control #{value}
+                    else
+                        textarea(id="#{id}" rows="10").form-control #{value}
+=======
 mixin addRow(id,name,type,value,readonly)
     .form-group
         label(for="#{id}").col-md-3.control-label
@@ -13,3 +35,4 @@ mixin addRow(id,name,type,value,readonly)
                     select(id="#{id}").form-control
                         each item,i in value
                             option(value='#{item.value}').form-control   #{item.name}
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0

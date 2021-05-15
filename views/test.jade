@@ -1,4 +1,25 @@
 extends layout
 
 block content
-  pre #{message}
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        include includes/form
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title.text-center #{form.title}
+          div(style="max-height:500px;overflow:auto").panel-body
+            form.form-horizontal
+              each item,i in form.data
+                +addRow(item.id,item.name,item.type,item.value,item.readonly)
+              .form-group
+                .col-md-offset-3.col-md-3
+                  button.btn.btn-primary.btn-block(id='submit' type="button" onclick="SendTrans(this)")
+                    span(class="glyphicon glyphicon-send" aria-hidden="true")
+                      | &nbsp
+                    span
+                      | 发送
+
+
+block scripts
+    script(src='/javascripts/simtrans.js') 

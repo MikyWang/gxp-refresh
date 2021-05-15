@@ -1,15 +1,15 @@
 import { SFTPType } from '../Enums';
-import { SshClient } from './sshClient';
+import { SshClientP } from './sshClientP';
 export class GxpEnv {
     private _name: string;
     private _ip: string;
     private _enname: string;
-    private _sshClient: SshClient;
+    private _sshClient: SshClientP;
     private _isDev: boolean;
 
     public port: number = 22;
     public user: string = 'gxp';
-    public password: string = 'gxp';
+    public password: string = 'Gzyhgxp@1234';
 
     constructor(name: string, ip: string, enname: string, isDev: boolean) {
         this._name = name;
@@ -46,33 +46,25 @@ export class GxpEnv {
         return '../build-gxp-env/config/' + this.enname + `.xml`;
     }
 
-    public get sshClient(): SshClient {
+    public get sshClient(): SshClientP {
         return this._sshClient;
     }
 
-    public uploadOrGetConfigure(sftpType: SFTPType, callback: Function, options: any) {
-        this._sshClient = new SshClient(this.ip, this.port, this.user, this.password);
-        this.sshClient.startConnection(option => {
-            let sftpParam = sftpType == SFTPType.get ? this.tmpConfigFileName : this.backupConfigFileName;
-            this.sshClient.sFtpOperation(this.remoteConfigFileName, sftpParam, sftpType, opt => {
-                this.sshClient.stopConnection();
-                if (callback) {
-                    callback(opt);
-                }
-            }, option);
-        }, options);
+    public async uploadOrGetConfigure(sftpType: SFTPType): Promise<IOption> {
+        this._sshClient = new SshClientP(this.ip, this.port, this.user, this.password);
+        let option = await this.sshClient.startConnection();
+        let sftpParam = sftpType == SFTPType.get ? this.tmpConfigFileName : this.backupConfigFileName;
+        option.cmdResult += (await this.sshClient.sFtpOperation(this.remoteConfigFileName, sftpParam, sftpType)).cmdResult;
+        option.cmdResult += (await this.sshClient.stopConnection()).cmdResult;
+        return option;
     }
 
-    public restartService(callback, options) {
-        this._sshClient = new SshClient(this.ip, this.port, this.user, this.password);
-        this.sshClient.startConnection(option => {
-            let cmd = `stopgxp -e\n sleep 1\n startgxp\n sleep 1\n stopgxp -e\n sleep 1\n startgxp\n sleep 1\n exit\n`;
-            this.sshClient.callShell(cmd, opt => {
-                this.sshClient.stopConnection();
-                if (callback) {
-                    callback(opt);
-                }
-            }, option);
-        }, options);
+    public async restartService(): Promise<IOption> {
+        this._sshClient = new SshClientP(this.ip, this.port, this.user, this.password);
+        let option = await this.sshClient.startConnection();
+        let cmd = `stopgxp -e\n sleep 1\n startgxp\n sleep 1\n stopgxp -e\n sleep 1\n startgxp\n sleep 1\n exit\n`;
+        option.cmdResult += (await this.sshClient.callShell(cmd)).cmdResult;
+        option.cmdResult += (await this.sshClient.stopConnection()).cmdResult;
+        return option;
     }
 }

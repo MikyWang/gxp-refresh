@@ -1,0 +1,14 @@
+table.table.table-hover.table-striped.table-responsive
+    thead
+        tr.info
+            each item in tableHeads
+                th.text-center(class='col-md-#{item.width}') item.content
+    tbody
+        each tbody,i in tableBodys
+            if i%2==0
+                tr.success
+            else
+                tr.warning
+            each tline in tbody
+                td.text-center(class='col-md-#{tline.width}' id='#{tline.id}') tline.content
+            

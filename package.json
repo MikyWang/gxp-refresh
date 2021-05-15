@@ -1,3 +1,47 @@
+<<<<<<< HEAD
+{
+  "name": "gxp-refresh",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsc -w && concurrently \"node ./bin/www\"",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w"
+  },
+  "dependencies": {
+    "better-xlsx": "^0.7.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "^4.1.0",
+    "express": "^4.16.4",
+    "forever": "^0.15.3",
+    "iconv-lite": "^0.4.19",
+    "jade": "~1.11.0",
+    "jquery": "^3.4.1",
+    "jquery.cookie": "^1.4.1",
+    "morgan": "^1.9.1",
+    "node-uuid": "^1.4.8",
+    "node-xlsx": "^0.12.1",
+    "reflect-metadata": "^0.1.8",
+    "serve-favicon": "^2.5.0",
+    "ssh2": "^0.5.5",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "concurrently": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikyWang/gxp-refresh.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikyWang/gxp-refresh/issues"
+  },
+  "homepage": "https://github.com/MikyWang/gxp-refresh#readme"
+}
+=======
 {
   "name": "gxp-refresh",
   "version": "0.0.0",
@@ -40,3 +84,4 @@
   },
   "homepage": "https://github.com/MikyWang/gxp-refresh#readme"
 }
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0

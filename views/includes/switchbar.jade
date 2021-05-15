@@ -1,0 +1,18 @@
+mixin logTitle(itemList)
+    each item,i in itemList.groupItems
+        if item.isActive==true
+            li(role="presentation").active
+                a(id="#{item.itemName}" href='#' onclick="#{itemList.clickEventName}") #{item.itemName}
+        else
+            li(role="presentation")
+                a(id="#{item.itemName}" href='#' onclick="#{itemList.clickEventName}") #{item.itemName}
+
+ul.nav.nav-tabs
+    +logTitle(itemList)
+
+.panel.panel-default
+    .panel-body
+        if log.ready==true
+            code!=log.data
+        else
+            span.text-danger="正在加载中...."

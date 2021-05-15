@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='GBK'?>
+<root>
+	<pub>
+		<appid>beps</appid>
+		<transcode>961302</transcode>
+		<provno />
+		<transdep>0000288000</transdep>
+		<operator>120087</operator>
+		<transdate>20191017</transdate>
+		<transtime>171500</transtime>
+		<channelid>9002052</channelid>
+		<termnum>28125000</termnum>
+		<channelseq>20210111170351937</channelseq>
+		<auther />
+		<jiaoyima>5101</jiaoyima>
+	</pub>
+	<hupp>
+		<interfacetp>2</interfacetp>
+		<businum />
+		<msgtp>beps.121.001.01</msgtp>
+		<recvbkid>102100099996</recvbkid>
+		<txtpcd>A100</txtpcd>
+		<txctgypurpcd />
+		<ccy>CNY</ccy>
+		<amt>0.22</amt>
+		<feeamt>0</feeamt>
+		<feetflagcollect>1</feetflagcollect>
+		<feeflagtransfer>0</feeflagtransfer>
+		<doubleflag>1</doubleflag>
+		<trntype>1</trntype>
+		<txsttlmprty>HIGH</txsttlmprty>
+		<payeraccno>2880000103100000869</payeraccno>
+		<payername>?????????????</payername>
+		<payeraddr />
+		<payerbkid />
+		<payerbknm />
+		<rcveraccno>621226888888888888</rcveraccno>
+		<rcvername>??????</rcvername>
+		<rcveraddr />
+		<rcverbkid>102421000091</rcverbkid>
+		<rcverbknm>?й????????й?????????????????·???</rcverbknm>
+		<ps>??????????</ps>
+		<ps2 />
+		<addword>??????????</addword>
+		<addword2 />
+		<checkoper />
+		<intermediarybkid1 />
+		<Intermediarybkid2 />
+		<excsendflg />
+		<addinfo_gk />
+		<authpasswd />
+		<zftj />
+		<passwd />
+		<cardseq />
+		<payersttlmacct />
+		<payersttlmacctnm />
+		<send_flag>1</send_flag>
+		<gzauthflag />
+	</hupp>
+</root>

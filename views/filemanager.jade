@@ -1,0 +1,26 @@
+extends layout
+block content
+    .container
+        .row
+            .col-md-3
+                .panel.panel-default
+                    .panel-heading
+                        h3.panel-title.text-center 流程转向
+                    .panel-body
+                        button.btn.btn-primary.btn-block(id='submit' type="button" onclick="downloadFlow(this)")
+                            span(class="glyphicon glyphicon-download" aria-hidden="true")
+                                | &nbsp
+                            span
+                                | 下载
+            .col-md-3
+                .panel.panel-default
+                    .panel-heading
+                        h3.panel-title.text-center 接入端口统计
+                    .panel-body
+                        button.btn.btn-primary.btn-block(id='submit' type="button" onclick="downloadIcaPort(this)")
+                            span(class="glyphicon glyphicon-download" aria-hidden="true")
+                                | &nbsp
+                            span
+                                | 下载
+    script(src='/javascripts/fileManager.js')                            
+    

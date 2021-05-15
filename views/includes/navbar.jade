@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+mixin navOption(name,link,isActive)
+  if isActive==true
+    li.active
+      a(href=link)=name
+  else
+    li
+      a(href=link)=name
+
+mixin OptionActive(navIndex)
+  - var list=[['环境重置','/gxp/refresh'],["地址及端口修改","/gxp/modify?envName=dev63"],["二代环境管理","/gaps/cnaps-manager?envName=cnaps32"],["电信诈骗黑灰名单维护","/gaps/dxzp?envName=gaps36"],["二代流水状态查询修改","/gaps/cnaps-records?envName=cnaps31"],["二代交易模拟发送","/gaps/cnaps-sim"],["文件管理","/file/file-manager"],["GAPS交易模拟发送","/gaps/gapstrans"]];
+  - for(var i=0;i<list.length;i++)
+    +navOption(list[i][0],list[i][1],navIndex==(i+1))
+
+nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" aria-expanded="false")
+            span.sr-only
+              Toggle navigation
+            span.icon-bar
+          a.navbar-brand(href='/')
+            | 大前置管理
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1
+          ul.nav.navbar-nav
+=======
 mixin navOption(name,link,isActive)
   if isActive==true
     li.active
@@ -49,4 +75,5 @@ nav.navbar.navbar-default.navbar-fixed-top
             | 大前置管理
         .collapse.navbar-collapse#bs-example-navbar-collapse-1
           ul.nav.navbar-nav
+>>>>>>> c20edd402b0e513661efb783f8981168af5ffcb0
             +OptionActive(navbarIndex)
